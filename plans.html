@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Offer Plans</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts for Inter styling -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f5f6fa;
+        }
+    </style>
+</head>
+<body class="max-w-md mx-auto min-h-screen shadow-lg bg-white flex flex-col justify-between relative select-none">
+
+    <div class="flex flex-col flex-1 bg-[#f5f6fa]">
+        <!-- HEADER / NAVBAR -->
+        <header id="mainHeader" class="bg-[#1e56e3] text-white px-4 py-3 flex items-center justify-between sticky top-0 z-50">
+            <div class="flex items-center gap-3 w-full max-w-[80%]">
+                <i class="fa-solid fa-arrow-left text-xl cursor-pointer" onclick="location.href='index.html'"></i>
+                <img id="headerLogo" src="" alt="Operator Logo" class="w-8 h-8 rounded-full object-cover shadow-sm shrink-0 bg-white ring-2 ring-white">
+                <div class="relative flex-1 ml-1">
+                    <input type="text" placeholder="Search" class="w-full bg-black/15 text-sm rounded-full pl-4 pr-9 py-2 focus:outline-none placeholder-white/70 text-white">
+                    <i class="fa-solid fa-magnifying-glass absolute right-3 top-3 text-xs text-white/70"></i>
+                </div>
+            </div>
+            <div>
+                <i class="fa-regular fa-user text-2xl cursor-pointer"></i>
+            </div>
+        </header>
+
+        <!-- RECHARGING FOR SECTION -->
+        <div class="bg-white px-5 py-3 flex items-center gap-4">
+            <i class="fa-solid fa-arrow-left text-gray-700 text-xl cursor-pointer mt-1" onclick="location.href='index.html'"></i>
+            <div>
+                <h2 class="text-gray-900 text-[21px] font-bold tracking-tight">Recharging for <span id="displayNum">8934457839</span></h2>
+                <a href="index.html" class="text-[#1e56e3] font-semibold text-[13px] block mt-0.5">Change number</a>
+            </div>
+        </div>
+
+        <!-- TIMER BLOCK -->
+        <div class="bg-white py-2 text-center border-t border-gray-100">
+            <p class="text-[#e41b23] font-bold text-[14px] tracking-wide">
+                Special Offers End In: <span id="timer" class="font-extrabold ml-1">08:06</span>
+            </p>
+        </div>
+
+        <!-- MAIN TITLE -->
+        <div class="px-5 pt-5 pb-1">
+            <h1 class="text-[#0a2240] text-[26px] font-extrabold tracking-tight">Special Offer Plans</h1>
+            <p class="text-gray-600 font-bold text-[15px] mt-0.5">Number : <span id="displayNumSub">8934457839</span></p>
+        </div>
+
+        <!-- PLANS CONTAINER -->
+        <div class="px-4 space-y-4 mt-4 pb-8">
+            
+            <!-- PLAN 1 (₹499) -->
+            <div class="bg-white rounded-[28px] p-5 shadow-[0_4px_25px_rgba(0,0,0,0.04)] border border-gray-100 relative overflow-hidden">
+                <!-- HOT TAG -->
+                <div class="absolute top-0 left-0 bg-[#f97316] text-white text-[11px] font-black uppercase px-6 py-1 rounded-br-xl italic tracking-wider shadow-xs">HOT</div>
+                
+                <!-- PRICE & BADGE ROW -->
+                <div class="flex justify-between items-center mt-4">
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-[34px] font-extrabold text-gray-900 tracking-tight">₹499</span>
+                        <span class="text-[17px] font-medium text-gray-400 line-through tracking-tight">₹2999</span>
+                    </div>
+                    <span class="bg-[#e41b23] text-white text-[10px] font-bold px-2 py-0.5 rounded-xs tracking-wider uppercase">TRUE 5G DATA</span>
+                </div>
+                
+                <!-- VIEW DETAILS LINK -->
+                <button class="text-[#1e56e3] font-bold text-[14px] mt-4 block text-left">View Details</button>
+                
+                <!-- GRID DATA INFO -->
+                <div class="grid grid-cols-3 gap-x-1 gap-y-4 mt-3 pt-1">
+                    <div>
+                        <span class="text-gray-400 block text-[12px] font-bold tracking-tight">VALIDITY</span>
+                        <span class="text-gray-900 font-extrabold text-[16px]">1 Year</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block text-[12px] font-bold tracking-tight">DATA</span>
+                        <span class="text-gray-900 font-extrabold text-[16px]">3 GB/day</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block text-[12px] font-bold tracking-tight">Voice</span>
+                        <span class="text-gray-900 font-extrabold text-[16px]">5G Unlimited</span>
+                    </div>
+                    <div class="col-span-3">
+                        <span class="text-gray-400 block text-[12px] font-bold tracking-tight">SMS</span>
+                        <span class="text-gray-900 font-extrabold text-[16px]">100/day</span>
+                    </div>
+                </div>
+
+                <!-- DIVIDER LINE -->
+                <div class="border-b border-gray-200/60 my-4"></div>
+
+                <!-- SUBSCRIPTIONS SECTION -->
+                <div>
+                    <span class="text-gray-400 block text-[11px] font-bold tracking-wider uppercase mb-2">SUBSCRIPTIONS</span>
+                    <div class="flex items-center gap-2">
+                        <img src="https://i.ibb.co/V0jRs95R/jiotv.jpg" class="w-8 h-8 object-cover rounded-full" alt="sub">
+                        <img src="https://i.ibb.co/LX8fJnvq/sony.png" class="w-8 h-8 object-cover rounded-full" alt="sub">
+                        <img src="https://i.ibb.co/MxHCHys0/youtube.jpg" class="w-8 h-8 object-cover rounded-full" alt="sub">
+                        <img src="https://i.ibb.co/TxrQMTFb/hotstar.jpg" class="w-8 h-8 object-cover rounded-full" alt="sub">
+                        <img src="https://i.ibb.co/VPb27R7/amazon.jpg" class="w-8 h-8 object-cover rounded-full" alt="sub">
+                    </div>
+                </div>
+
+                <!-- RECHARGE BUTTON -->
+                <button onclick="goToPayment(499)" class="recharge-btn w-full text-white font-bold py-3.5 rounded-[18px] mt-5 text-[17px] tracking-wide shadow-sm transition-all active:scale-[0.99]">Recharge</button>
+            </div>
+
+            <!-- PLAN 2 (₹349) -->
+            <div class="bg-white rounded-[28px] p-5 shadow-[0_4px_25px_rgba(0,0,0,0.04)] border border-gray-100 relative overflow-hidden">
+                
+                <!-- PRICE & BADGE ROW -->
+                <div class="flex justify-between items-center mt-1">
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-[34px] font-extrabold text-gray-900 tracking-tight">₹349</span>
+                        <span class="text-[17px] font-medium text-gray-400 line-through tracking-tight">₹1499</span>
+                    </div>
+                    <span class="bg-[#e41b23] text-white text-[10px] font-bold px-2 py-0.5 rounded-xs tracking-wider uppercase">TRUE 5G DATA</span>
+                </div>
+                
+                <!-- VIEW DETAILS LINK -->
+                <button class="text-[#1e56e3] font-bold text-[14px] mt-4 block text-left">View Details</button>
+                
+                <!-- GRID DATA INFO -->
+                <div class="grid grid-cols-3 gap-x-1 gap-y-4 mt-3 pt-1">
+                    <div>
+                        <span class="text-gray-400 block text-[12px] font-bold tracking-tight">VALIDITY</span>
+                        <span class="text-gray-900 font-extrabold text-[16px]">6 Months</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block text-[12px] font-bold tracking-tight">DATA</span>
+                        <span class="text-gray-900 font-extrabold text-[16px]">2 GB/day</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block text-[12px] font-bold tracking-tight">Voice</span>
+                        <span class="text-gray-900 font-extrabold text-[16px]">5G Unlimited</span>
+                    </div>
+                    <div class="col-span-3">
+                        <span class="text-gray-400 block text-[12px] font-bold tracking-tight">SMS</span>
+                        <span class="text-gray-900 font-extrabold text-[16px]">100/day</span>
+                    </div>
+                </div>
+
+                <!-- DIVIDER LINE -->
+                <div class="border-b border-gray-200/60 my-4"></div>
+
+                <!-- SUBSCRIPTIONS SECTION -->
+                <div>
+                    <span class="text-gray-400 block text-[11px] font-bold tracking-wider uppercase mb-2">SUBSCRIPTIONS</span>
+                    <div class="flex items-center gap-2">
+                        <img src="https://img.icons8.com/color/48/youtube-play.png" class="w-8 h-8 object-cover rounded-full" alt="sub">
+                        <img src="https://i.ibb.co/VPb27R7/amazon.jpg" class="w-8 h-8 object-cover rounded-full" alt="sub">
+                        <img src="https://img.icons8.com/color/48/netflix-desktop-app.png" class="w-8 h-8 object-cover rounded-full" alt="sub">
+                    </div>
+                </div>
+
+                <!-- RECHARGE BUTTON -->
+                <button onclick="goToPayment(349)" class="recharge-btn w-full text-white font-bold py-3.5 rounded-[18px] mt-5 text-[17px] tracking-wide shadow-sm transition-all active:scale-[0.99]">Recharge</button>
+            </div>
+
+            <!-- PLAN 3 (₹299) -->
+            <div class="bg-white rounded-[28px] p-5 shadow-[0_4px_25px_rgba(0,0,0,0.04)] border border-gray-100 relative overflow-hidden">
+                
+                <!-- PRICE & BADGE ROW -->
+                <div class="flex justify-between items-center mt-1">
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-[34px] font-extrabold text-gray-900 tracking-tight">₹299</span>
+                        <span class="text-[17px] font-medium text-gray-400 line-through tracking-tight">₹749</span>
+                    </div>
+                    <span class="bg-[#f59e0b] text-white text-[10px] font-bold px-2 py-0.5 rounded-xs tracking-wider uppercase">BEST SELLER</span>
+                </div>
+                
+                <!-- VIEW DETAILS LINK -->
+                <button class="text-[#1e56e3] font-bold text-[14px] mt-4 block text-left">View Details</button>
+                
+                <!-- GRID DATA INFO -->
+                <div class="grid grid-cols-3 gap-x-1 gap-y-4 mt-3 pt-1">
+                    <div>
+                        <span class="text-gray-400 block text-[12px] font-bold tracking-tight">VALIDITY</span>
+                        <span class="text-gray-900 font-extrabold text-[16px]">84 Days</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block text-[12px] font-bold tracking-tight">DATA</span>
+                        <span class="text-gray-900 font-extrabold text-[16px]">1.5 GB/day</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block text-[12px] font-bold tracking-tight">Voice</span>
+                        <span class="text-gray-900 font-extrabold text-[16px]">Unlimited</span>
+                    </div>
+                    <div class="col-span-3">
+                        <span class="text-gray-400 block text-[12px] font-bold tracking-tight">SMS</span>
+                        <span class="text-gray-900 font-extrabold text-[16px]">100/day</span>
+                    </div>
+                </div>
+
+                <!-- DIVIDER LINE -->
+                <div class="border-b border-gray-200/60 my-4"></div>
+
+                <!-- SUBSCRIPTIONS SECTION -->
+                <div>
+                    <span class="text-gray-400 block text-[11px] font-bold tracking-wider uppercase mb-2">SUBSCRIPTIONS</span>
+                    <div class="flex items-center gap-2">
+                        <img src="https://img.icons8.com/color/48/youtube-play.png" class="w-8 h-8 object-cover rounded-full" alt="sub">
+                        <img src="https://i.ibb.co/VPb27R7/amazon.jpg" class="w-8 h-8 object-cover rounded-full" alt="sub">
+                    </div>
+                </div>
+
+                <!-- RECHARGE BUTTON -->
+                <button onclick="goToPayment(299)" class="recharge-btn w-full text-white font-bold py-3.5 rounded-[18px] mt-5 text-[17px] tracking-wide shadow-sm transition-all active:scale-[0.99]">Recharge</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- LOCKED FOOTER -->
+    <footer class="mt-auto pt-8 pb-10 text-center px-6 flex flex-col items-center justify-center gap-2 border-t border-gray-100/80 bg-white mb-6">
+        <p class="text-[12px] text-gray-400 font-semibold flex items-center justify-center gap-1">
+            <i class="fa-solid fa-shield-halved text-emerald-500"></i> 100% Secure 256-bit Encrypted Connection
+        </p>
+        <div class="flex items-center gap-1.5 opacity-85 mt-1 scale-95">
+            <span class="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Powered by</span>
+            <div class="flex items-center bg-[#1e56e3] text-white px-2.5 py-1 rounded-md shadow-xs gap-1.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Reliance_Jio_Logo_%28October_2015%29.svg/960px-Reliance_Jio_Logo_%28October_2015%29.svg.png?_=20230708150838" alt="Jio Logo" class="w-3.5 h-3.5 rounded-full object-cover bg-white">
+                <span class="font-black text-[10px] tracking-tight">MyJioPay</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const operatorConfigs = {
+            jio: { primaryColor: '#0f3cc9', logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Reliance_Jio_Logo_%28October_2015%29.svg/960px-Reliance_Jio_Logo_%28October_2015%29.svg.png?_=20230708150838' },
+            airtel: { primaryColor: '#e41b23', logoUrl: 'https://i.pinimg.com/736x/86/f4/d6/86f4d647b439f5f07e04f6ec15790cd7.jpg' },
+            vi: { primaryColor: '#ff0000', logoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-TFjCBMUrr8Bu1MW4i1VrMwhzUhg1rfU7QdQSMeSIUQ&s=10' },
+            bsnl: { primaryColor: '#0a3a82', logoUrl: 'https://i.ibb.co/SZ0bgP5/Screenshot-2026-07-09-161947.png' }
+        };
+
+        const activeOperator = localStorage.getItem('recharge_operator') || 'jio';
+        const num = localStorage.getItem('recharge_mobile') || "8934457839";
+        const config = operatorConfigs[activeOperator];
+
+        document.getElementById('displayNum').innerText = num;
+        document.getElementById('displayNumSub').innerText = num;
+        
+        // Setup operator specific theme colors dynamically
+        document.getElementById('mainHeader').style.backgroundColor = config.primaryColor;
+        document.getElementById('headerLogo').src = config.logoUrl;
+        document.querySelectorAll('.recharge-btn').forEach(btn => { btn.style.backgroundColor = config.primaryColor; });
+
+        function goToPayment(amount) {
+            localStorage.setItem('recharge_amount', amount);
+            window.location.href = 'payment.html';
+        }
+
+        let timerInterval;
+        function startTimer() {
+            let time = 486; // Exact match 08:06 remaining
+            const timerElement = document.getElementById('timer');
+            timerInterval = setInterval(() => {
+                let minutes = Math.floor(time / 60); let seconds = time % 60;
+                minutes = minutes < 10 ? '0' + minutes : minutes; seconds = seconds < 10 ? '0' + seconds : seconds;
+                timerElement.innerText = `${minutes}:${seconds}`;
+                if (time <= 0) clearInterval(timerInterval);
+                time--;
+            }, 1000);
+        }
+        startTimer();
+    </script>
+</body>
+</html>

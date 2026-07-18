@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recharge Indian Offers</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts for Inter styling -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fa;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .theme-bg-transition {
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+    </style>
+</head>
+<body class="max-w-md mx-auto min-h-screen shadow-lg bg-white flex flex-col justify-between relative select-none">
+
+    <!-- MAIN APP WRAPPER FOR CONTENT -->
+    <div class="flex flex-col flex-1">
+        <!-- HEADER / NAVBAR -->
+        <header id="mainHeader" class="bg-[#1e56e3] text-white px-4 py-3 flex items-center justify-between sticky top-0 z-50 theme-bg-transition">
+            <div class="flex items-center gap-3 w-full max-w-[80%]">
+                <i class="fa-solid fa-bars text-xl cursor-pointer"></i>
+                <img id="headerLogo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Reliance_Jio_Logo_%28October_2015%29.svg/960px-Reliance_Jio_Logo_%28October_2015%29.svg.png?_=20230708150838" 
+                     alt="Operator Logo" class="w-8 h-8 rounded-full object-cover shadow-sm shrink-0 bg-white ring-2 ring-white">
+                <div class="relative flex-1 ml-1">
+                    <input type="text" placeholder="Search" class="w-full bg-black/15 text-sm rounded-full pl-4 pr-9 py-2 focus:outline-none placeholder-white/70 text-white">
+                    <i class="fa-solid fa-magnifying-glass absolute right-3 top-3 text-xs text-white/70"></i>
+                </div>
+            </div>
+            <div>
+                <i class="fa-regular fa-user text-2xl cursor-pointer"></i>
+            </div>
+        </header>
+
+        <!-- SECTION A: FULL COMPLETE HOME PAGE -->
+        <div id="homePage" class="flex flex-col items-center px-6 pt-10">
+            <h1 class="text-[#000000] text-[34px] font-black tracking-tight text-center">Welcome To Jio </h1>
+            <p class="text-[#58718a] text-[15px] font-medium mt-1 text-center">Enter your number to check offers.</p>
+
+            <div class="mt-6">
+                <button id="serviceTagBtn" class="bg-[#1e56e3] text-white px-8 py-2.5 rounded-full font-bold text-[15px] tracking-wide shadow-sm theme-bg-transition">
+                    Mobile
+                </button>
+            </div>
+
+            <!-- OPERATOR SELECTOR SECTION -->
+            <div class="grid grid-cols-4 gap-4 w-full mt-10 px-2">
+                <!-- JIO -->
+                <label class="flex flex-col items-center cursor-pointer group">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Reliance_Jio_Logo_%28October_2015%29.svg/960px-Reliance_Jio_Logo_%28October_2015%29.svg.png?_=20230708150838" 
+                         alt="Jio" class="w-12 h-12 rounded-full object-cover mb-2 border border-gray-200 shadow-sm">
+                    <input type="radio" name="operator" value="jio" checked onclick="switchOperatorTheme('jio')" class="accent-blue-600 w-4 h-4 cursor-pointer">
+                    <span class="text-[11px] font-bold text-gray-800 mt-1 text-center leading-tight whitespace-nowrap">Jio</span>
+                </label>
+
+                <!-- AIRTEL -->
+                <label class="flex flex-col items-center cursor-pointer group">
+                    <img src="https://i.pinimg.com/736x/86/f4/d6/86f4d647b439f5f07e04f6ec15790cd7.jpg" 
+                         alt="Airtel" class="w-12 h-12 rounded-full object-cover mb-2 border border-gray-200 shadow-sm">
+                    <input type="radio" name="operator" value="airtel" onclick="switchOperatorTheme('airtel')" class="accent-red-600 w-4 h-4 cursor-pointer">
+                    <span class="text-[11px] font-bold text-gray-800 mt-1 text-center leading-tight whitespace-nowrap">Airtel</span>
+                </label>
+
+                <!-- VI -->
+                <label class="flex flex-col items-center cursor-pointer group">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-TFjCBMUrr8Bu1MW4i1VrMwhzUhg1rfU7QdQSMeSIUQ&s=10" 
+                         alt="Vi" class="w-12 h-12 rounded-full object-cover mb-2 border border-gray-200 shadow-sm bg-white">
+                    <input type="radio" name="operator" value="vi" onclick="switchOperatorTheme('vi')" class="accent-red-600 w-4 h-4 cursor-pointer">
+                    <span class="text-[11px] font-bold text-gray-800 mt-1 text-center leading-tight whitespace-nowrap">Vi</span>
+                </label>
+
+                <!-- BSNL -->
+                <label class="flex flex-col items-center cursor-pointer group">
+                    <img src="https://i.ibb.co/SZ0bgP5/Screenshot-2026-07-09-161947.png" 
+                         alt="BSNL" class="w-12 h-12 rounded-full object-cover mb-2 border border-gray-200 shadow-sm bg-white">
+                    <input type="radio" name="operator" value="bsnl" onclick="switchOperatorTheme('bsnl')" class="accent-blue-800 w-4 h-4 cursor-pointer">
+                    <span class="text-[11px] font-bold text-gray-800 mt-1 text-center leading-tight whitespace-nowrap">BSNL</span>
+                </label>
+            </div>
+
+            <!-- Mobile Number Section -->
+            <div class="w-full mt-6">
+                <!-- Label -->
+                <div class="text-left mb-2">
+                    <span class="text-lg font-semibold text-gray-900">
+                        Mobile Number
+                    </span>
+                </div>
+
+                <!-- Input -->
+                <div class="relative">
+                    <input
+                        type="tel"
+                        id="mobileInput"
+                        maxlength="10"
+                        placeholder="Enter 10 digit mobile number"
+                        oninput="handleMobileInput(this);"
+                        class="w-full border border-gray-300 rounded-lg px-4 py-3.5 text-lg font-medium tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-gray-900 placeholder-gray-400"
+                    >
+
+                    <!-- Error Message -->
+                    <div id="errorBox" class="hidden text-red-500 font-semibold text-xs mt-1.5 ml-1 flex items-center gap-1 animate-fade-in">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        Please enter correct number
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTINUE BUTTON -->
+            <div class="w-full mt-4">
+                <button 
+                    id="continueBtn"
+                    onclick="validateAndProceed()"
+                    class="w-full bg-[#1e56e3] text-white font-bold py-3.5 rounded-full text-[15px] tracking-wide transition cursor-pointer flex items-center justify-center gap-2"
+                >
+                    Continue
+                </button>
+            </div>
+
+            <!-- HOMEPAGE EXTRA ADS BANNER -->
+            <div class="w-full mt-8 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/60 rounded-xl p-4 flex items-center justify-between">
+                <div>
+                    <span class="bg-amber-500 text-white font-black text-[9px] uppercase px-1.5 py-0.5 rounded tracking-wider">Super Deal</span>
+                    <h4 class="text-sm font-bold text-gray-900 mt-1">Get Extra 90% Discount On Available Plans</h4>
+                    <p class="text-xs text-gray-500 font-medium">Valid on all eligible packs .</p>
+                </div>
+                <i class="fa-solid fa-bolt text-amber-500 text-2xl animate-bounce"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIXED STATIC BRAND FOOTER -->
+    <footer class="mt-auto pt-8 pb-10 text-center px-6 flex flex-col items-center justify-center gap-2 border-t border-gray-100/80 bg-white mb-6">
+        <p class="text-[11px] text-gray-400 font-medium flex items-center justify-center gap-1">
+            <i class="fa-solid fa-shield-halved text-emerald-500"></i> 100% Secure 256-bit Encrypted Connection
+        </p>
+        <div class="flex items-center gap-1.5 opacity-85 mt-1 scale-95">
+            <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Powered by</span>
+            <div id="footerBrandBadge" class="flex items-center bg-[#1e56e3] text-white px-2 py-0.5 rounded-md shadow-xs gap-1.5">
+                <img id="footerBrandLogo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Reliance_Jio_Logo_%28October_2015%29.svg/960px-Reliance_Jio_Logo_%28October_2015%29.svg.png?_=20230708150838" alt="Brand Logo" class="w-3.5 h-3.5 rounded-full object-cover bg-white">
+                <span id="footerBrandText" class="font-black text-[9px] tracking-tight font-sans">JioOnePay</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const jioLogoUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Reliance_Jio_Logo_%28October_2015%29.svg/960px-Reliance_Jio_Logo_%28October_2015%29.svg.png?_=20230708150838';
+        const jioColor = '#1e56e3';
+
+        let activeOperator = 'jio';
+
+        function handleMobileInput(input) {
+            input.value = input.value.replace(/[^0-9]/g, '');
+            document.getElementById('errorBox').classList.add('hidden');
+        }
+
+        function switchOperatorTheme(operatorKey) {
+            // Active operator data back-end storage ke liye track hoga
+            activeOperator = operatorKey;
+            
+            // Lekin Visual UI pure tareeqe se humesha JIO blue aur logo par fixed rahega
+            document.getElementById('mainHeader').style.backgroundColor = jioColor;
+            document.getElementById('headerLogo').src = jioLogoUrl;
+            document.getElementById('continueBtn').style.backgroundColor = jioColor;
+            document.getElementById('serviceTagBtn').style.backgroundColor = jioColor;
+            
+            // Footer settings visual bypass
+            document.getElementById('footerBrandBadge').style.backgroundColor = jioColor;
+            document.getElementById('footerBrandLogo').src = jioLogoUrl;
+            document.getElementById('footerBrandText').innerText = 'JioOnePay';
+        }
+
+        function validateAndProceed() {
+            const mobileField = document.getElementById('mobileInput');
+            const errorBox = document.getElementById('errorBox');
+            const num = mobileField.value.trim();
+            const firstDigit = num.charAt(0);
+
+            if (num.length === 10 && ['6', '7', '8', '9'].includes(firstDigit)) {
+                errorBox.classList.add('hidden');
+                localStorage.setItem('recharge_mobile', num);
+                localStorage.setItem('recharge_operator', activeOperator);
+                window.location.href = 'plans.html';
+            } else {
+                errorBox.classList.remove('hidden');
+            }
+        }
+    </script>
+    
+</body>
+</html>
